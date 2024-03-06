@@ -1,8 +1,16 @@
 from flask import Flask, jsonify, json
+from flask_cors import CORS
 from random import choice
+import logging
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 json.provider.DefaultJSONProvider.ensure_ascii = False
+logging.getLogger('flask_cors').level = logging.DEBUG
+
+@app.route('/')
+def main_page():
+    return "OK"
 
 @app.route('/api/8ball')
 def iball():
