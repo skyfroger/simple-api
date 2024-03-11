@@ -53,7 +53,7 @@ def is_even(number: str):
 @app.route("/api/canvas", methods=["POST"])
 def canvas_add():
     data = request.get_json()
-    if len(pixels_field) < 1000:
+    if len(pixels_field) < 256:
         pixels_field.append(data)
     return data
 
