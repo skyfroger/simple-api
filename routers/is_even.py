@@ -8,6 +8,6 @@ class EvenNumberAnser(BaseModel):
     number: int
     isEven: bool
 
-@router.get("/api/is-even/{number}", response_model=EvenNumberAnser)
+@router.get("/is-even/{number}", response_model=EvenNumberAnser)
 async def is_number_even(number: int):
     return {"number": number, "isEven": number % 2 == 0}

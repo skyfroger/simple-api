@@ -16,17 +16,17 @@ class CanvasContent(BaseModel):
 
 pixels_field = []  # массив с координатами и цветами пикселей
 
-@router.post("/api/canvas", response_model=CanvasPoint)
+@router.post("/canvas", response_model=CanvasPoint)
 async def add_point_to_canvas(point: CanvasPoint):
     if len(pixels_field) < 256:
         pixels_field.append(point)
     return point
 
-@router.get("/api/canvas", response_model=CanvasContent)
+@router.get("/canvas", response_model=CanvasContent)
 async def get_canvas_content():
     return {"canvas": pixels_field}
 
-@router.delete("/api/canvas", response_model=CanvasContent)
+@router.delete("/canvas", response_model=CanvasContent)
 async def clear_canvas():
     pixels_field.clear()
     return {"canvas": pixels_field}
