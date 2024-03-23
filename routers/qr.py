@@ -3,7 +3,8 @@ from qrcode.image.styledpil import StyledPilImage
 from qrcode.image.styles.moduledrawers.pil import RoundedModuleDrawer
 import io
 
-from fastapi import APIRouter, Response
+from typing import Annotated
+from fastapi import APIRouter, Response, Query
 
 router = APIRouter(tags=["QR-код"])
 
@@ -11,7 +12,7 @@ router = APIRouter(tags=["QR-код"])
 @router.get(
     "/qr", responses={200: {"content": {"image/png": {}}}}, response_class=Response
 )
-def create_qr_code(text: str):
+def create_qr_code(text: Annotated[str, Query(title="Текст", max_length=256)]):
     qr = qrcode.QRCode(
         version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_L,
