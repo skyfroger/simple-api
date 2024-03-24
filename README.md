@@ -1,5 +1,11 @@
 # Simple API
 
+## Размещение API в облаке
+
+Для размещения собственной копии API можно использовать сервис [render.com](https://render.com). Создайте аккаунт на сервисе и нажмите следующую кнопку, чтобы автоматически создать веб-сервис.
+
+[![Разместить на Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/skyfroger/simple-api)
+
 Доступ к документации можно получить по адресу:
 
 ```
