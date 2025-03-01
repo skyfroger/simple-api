@@ -1,12 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.docs import (
-    get_redoc_html,
     get_swagger_ui_html,
     get_swagger_ui_oauth2_redirect_html,
+    get_redoc_html
 )
 
-from routers import ball8, is_even, canvas, qr
+from routers import ball8, is_even, canvas, qr, geo
 
 app = FastAPI(
     title="Simple API",
@@ -29,6 +29,7 @@ app.include_router(ball8.router)
 app.include_router(is_even.router)
 app.include_router(canvas.router)
 app.include_router(qr.router)
+app.include_router(geo.router)
 
 """
 чиню то, что не сломано
@@ -48,3 +49,11 @@ async def custom_swagger_ui_html():
 @app.get(app.swagger_ui_oauth2_redirect_url, include_in_schema=False)
 async def swagger_ui_redirect():
     return get_swagger_ui_oauth2_redirect_html()
+
+@app.get("/redoc", include_in_schema=False)
+async def redoc_html():
+    return get_redoc_html(
+        openapi_url=app.openapi_url,
+        title=app.title + " - ReDoc",
+        redoc_js_url="https://unpkg.com/redoc@next/bundles/redoc.standalone.js",
+    )
