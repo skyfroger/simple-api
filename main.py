@@ -6,7 +6,7 @@ from fastapi.openapi.docs import (
     get_redoc_html
 )
 
-from routers import ball8, is_even, canvas, qr, geo
+from routers import ball8, is_even, canvas, qr
 
 app = FastAPI(
     title="Simple API",
@@ -29,7 +29,7 @@ app.include_router(ball8.router)
 app.include_router(is_even.router)
 app.include_router(canvas.router)
 app.include_router(qr.router)
-app.include_router(geo.router)
+
 
 """
 чиню то, что не сломано
