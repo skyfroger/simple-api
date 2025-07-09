@@ -10,7 +10,10 @@ router = APIRouter(tags=["QR-код"])
 
 
 @router.get(
-    "/qr", responses={200: {"content": {"image/png": {}}}}, response_class=Response
+    "/qr",
+    responses={200: {"content": {"image/png": {}}}},
+    response_class=Response,
+    summary="QR-код по тексту",
 )
 def create_qr_code(text: Annotated[str, Query(title="Текст", max_length=256)]):
     qr = qrcode.QRCode(

@@ -2,13 +2,21 @@ from random import choice
 from pydantic import BaseModel
 
 from fastapi import APIRouter
+
 router = APIRouter(tags=["Магический шар"])
+
 
 # модель ответа для Магического шара
 class Ball8Answer(BaseModel):
     answer: str
 
-@router.get("/8ball", response_model=Ball8Answer)
+
+@router.get(
+    "/8ball",
+    response_model=Ball8Answer,
+    summary="Фраза от волшебного шара",
+    description="Возвращает случайную фразу из фиксированного набора",
+)
 async def get_8ball_message():
     messages = [
         "Бесспорно",
