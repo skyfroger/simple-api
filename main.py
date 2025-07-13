@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 
-from routers import ball8, is_even, canvas, qr, quote
+from routers import ball8, is_even, canvas, qr, quote, books
 
 app = FastAPI(
     title="Simple API",
@@ -24,3 +24,4 @@ app.include_router(is_even.router)
 app.include_router(canvas.router)
 app.include_router(qr.router)
 app.include_router(quote.router)
+app.include_router(books.router)
