@@ -8,8 +8,8 @@ router = APIRouter(tags=["Холст"])
 
 # модель точки на холсте
 class CanvasPoint(BaseModel):
-    x: Union[int | float]
-    y: Union[int | float]
+    x: Union[int, float]
+    y: Union[int, float]
     color: Union[int, str]
 
 
